@@ -3,6 +3,7 @@ package com.atguigu.cloud.controller;
 import com.atguigu.cloud.entities.Pay;
 import com.atguigu.cloud.entities.PayDTO;
 import com.atguigu.cloud.resp.ResultData;
+import com.atguigu.cloud.resp.ReturnCodeEnum;
 import com.atguigu.cloud.service.PayService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -69,5 +70,21 @@ public class PayController {
         List<Pay> payList = payService.getAll();
 
         return ResultData.success(payList);
+    }
+
+
+    @GetMapping(value = "/pay/error")
+    public ResultData<Integer> getPayError() {
+        Integer integer = Integer.valueOf(200);
+
+        try {
+            System.out.println("come in payerror test");
+            int age = 10/0;
+        } catch (Exception e) {
+           e.printStackTrace();
+            return ResultData.fail(ReturnCodeEnum.RC500.getCode(), e.getMessage());
+        }
+
+        return ResultData.success(integer);
     }
 }
