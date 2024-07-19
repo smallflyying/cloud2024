@@ -4,7 +4,6 @@ server:
 spring:
   application:
     name: cloud-consumer-openfeign-order
-  ####Spring Cloud Consul for Service Discovery
   cloud:
     consul:
       host: localhost
@@ -12,3 +11,14 @@ spring:
       discovery:
         prefer-ip-address: true #优先使用服务ip进行注册
         service-name: ${spring.application.name}
+    openfeign:
+      client:
+        config:
+          default:  # 设置的全局超时时间，指定服务名称可以设置单个服务的超时时间
+            #连接超时时间
+            connectTimeout: 3000
+            #读取超时时间
+            readTimeout: 3000
+          cloud-payment-service:
+            connectTimeout: 5000 #连接超时时间
+            readTimeout: 5000 #读取超时时间
