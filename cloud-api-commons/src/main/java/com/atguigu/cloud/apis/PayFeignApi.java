@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
  * @version 1.0
  * @since 2024/7/18
  */
-@FeignClient(value = "cloud-payment-service")
+// 自己人内部，自己访问自己，写微服务名字OK
+//@FeignClient(value = "cloud-payment-service")
+@FeignClient(value = "cloud-gateway")
 public interface PayFeignApi {
 
     /**
