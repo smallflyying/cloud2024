@@ -19,12 +19,26 @@ spring:
           predicates:
             - Path=/pay/gateway/get/**              # 断言，路径相匹配的进行路由
             # After Route Predicate
-            # - After=2024-07-22T22:42:23.730308700+08:00[Asia/Shanghai]
+            - After=2024-07-22T23:02:23.730308700+08:00[Asia/Shanghai]
             # Before Route Predicate (自己练习)
             # - Before=2024-07-22T22:44:23.730308700+08:00[Asia/Shanghai]
             # Between Route Predicate (自己练习)
-            - Between=2024-07-22T22:45:23.730308700+08:00[Asia/Shanghai], 2024-07-22T22:47:23.730308700+08:00[Asia/Shanghai]
-
+            # - Between=2024-07-22T22:45:23.730308700+08:00[Asia/Shanghai], 2024-07-22T22:47:23.730308700+08:00[Asia/Shanghai]
+            # Cookie Route Predicate
+            # - Cookie=username,lhf
+            # 测试方式一：
+            # curl http://localhost:9527/pay/gateway/get/1 （不带cookie）
+            # curl http://localhost:9527/pay/gateway/get/1 --cookie "username=lhf" (带cookie)
+            # - Header=X-Request-Id, \d+   # 请求头要有X-Request-Id属性并且值为整数的正则表达式
+            # 正确的 curl http://localhost:9527/pay/gateway/get/1 -H "X-Request-Id:123456"
+            # 错误的： curl http://localhost:9527/pay/gateway/get/1 -H "X-Request-Id:123456a"
+            # - Host=**.atguigu.com  # curl http://localhost:9527/pay/gateway/get/1 -H "Host:www.atguigu.com"
+            # 错误的：curl http://localhost:9527/pay/gateway/get/1 -H "Host:java.atguigu1.com1"
+            # - Query=username, \d+  # 要有参数名username并且值还要是整数才能路由
+            # ipAddress: 192.168.1.7
+            # - RemoteAddr=192.168.1.1/24 # 外部访问我的IP限制，最大跨度不超过32，目前是1~24它们是 CIDR 表示法。
+            # http://192.168.1.7:9527/pay/gateway/get/1
+            - Method=GET,POST  # 配置某个请求地址，只能用Get/Post方法访问，方法限制
 
         - id: pay_routh2 #pay_routh2                #路由的ID(类似mysql主键ID)，没有固定规则但要求唯一，建议配合服务名
           # uri: http://localhost:8001                #匹配后提供服务的路由地址
