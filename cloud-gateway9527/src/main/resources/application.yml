@@ -57,6 +57,8 @@ spring:
             # - Path=/gateway/filter/**              # 断言，为配合PrefixPath测试过滤，暂时注释掉/pay
             # - Path=/XYZ/abc/{segment}           # 断言，为配合SetPath测试，{segment}的内容最后被SetPath取代
           filters:
+            # http://localhost:9527/pay/gateway/filter?atguigu=java
+            - My=atguigu
             # - RedirectTo=302, http://www.atguigu.com/ # 访问http://localhost:9527/pay/gateway/filter跳转到http://www.atguigu.com/
             # - SetPath=/pay/gateway/{segment}  # {segment}表示占位符，你写abc也行但要上下一致
             # 被分拆为: PrefixPath + Path
