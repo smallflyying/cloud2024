@@ -3,20 +3,17 @@ package com.atguigu.cloud;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
  * @author LiHongFei
  * @version 1.0
- * @since 2024/7/25
+ * @since 2024/7/27
  */
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableFeignClients
-public class Main83 {
+public class Main9528 {
 
     public static void main(String[] args) {
-        SpringApplication.run(Main83.class, args);
+        SpringApplication.run(Main9528.class, args);
     }
-
 }
