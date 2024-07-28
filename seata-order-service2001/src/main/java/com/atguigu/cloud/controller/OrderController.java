@@ -22,6 +22,7 @@ public class OrderController {
 
     /**
      * 创建订单
+     * 请求测试地址：http://localhost:2001/order/create?userId=1&productId=1&count=10&money=100
      */
     @GetMapping(value = "/order/create")
     public ResultData create(Order order) {

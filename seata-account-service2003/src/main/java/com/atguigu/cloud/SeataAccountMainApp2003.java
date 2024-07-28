@@ -1,6 +1,5 @@
 package com.atguigu.cloud;
 
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -10,15 +9,15 @@ import tk.mybatis.spring.annotation.MapperScan;
 /**
  * @author LiHongFei
  * @version 1.0
- * @since 2024/7/27
+ * @since 2024/7/28
  */
-@SpringBootApplication
-@MapperScan("com.atguigu.cloud.mapper") //import tk.mybatis.spring.annotation.MapperScan;
-@EnableDiscoveryClient //服务注册和发现
+@EnableDiscoveryClient
 @EnableFeignClients
-public class SeataOrderMainApp2001 {
+@MapperScan("com.atguigu.cloud.mapper") //import tk.mybatis.spring.annotation.MapperScan;
+@SpringBootApplication
+public class SeataAccountMainApp2003 {
 
     public static void main(String[] args) {
-        SpringApplication.run(SeataOrderMainApp2001.class, args);
+        SpringApplication.run(SeataAccountMainApp2003.class,args);
     }
 }

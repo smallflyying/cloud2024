@@ -6,6 +6,7 @@ import com.atguigu.cloud.entities.Order;
 import com.atguigu.cloud.mapper.OrderMapper;
 import com.atguigu.cloud.service.OrderService;
 import io.seata.core.context.RootContext;
+import io.seata.spring.annotation.GlobalTransactional;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -36,6 +37,7 @@ public class OrderServiceImpl implements OrderService {
     private AccountFeignApi accountFeignApi;
 
     @Override
+    @GlobalTransactional(name = "lhf-create-order",rollbackFor = Exception.class) //AT
     public void create(Order order) {
         // xid全局事务id的检查， 重要
         String xid = RootContext.getXID();

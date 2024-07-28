@@ -1,12 +1,16 @@
 package com.atguigu.cloud.entities;
 
+import lombok.ToString;
+
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * 表名：t_storage
 */
 @Table(name = "t_storage")
-public class Storage {
+@ToString
+public class Storage implements Serializable {
     @Id
     @GeneratedValue(generator = "JDBC")
     private Long id;
